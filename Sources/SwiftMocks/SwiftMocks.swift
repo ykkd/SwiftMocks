@@ -163,8 +163,8 @@ public struct MockVariable<VarType> {
     }
 }
 
-public struct ThrowingMock<ArgumentType, ReturnType> {
-    public typealias CallType = ((ArgumentType) throws -> ReturnType)
+public struct ThrowingMock<ArgumentType: Sendable, ReturnType: Sendable>: Sendable {
+    public typealias CallType = (@Sendable (ArgumentType) throws -> ReturnType)
     
     private var callMock: CallType
     
