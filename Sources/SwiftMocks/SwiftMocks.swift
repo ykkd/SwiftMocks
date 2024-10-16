@@ -11,8 +11,8 @@
 ///     }
 ///
 
-public struct Mock<ArgumentType, ReturnType> {
-    public typealias CallType = ((ArgumentType) -> ReturnType)
+public struct Mock<ArgumentType: Sendable, ReturnType: Sendable>: Sendable {
+    public typealias CallType = (@Sendable (ArgumentType) -> ReturnType)
     
     private var callMock: CallType
     
